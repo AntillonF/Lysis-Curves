@@ -5,11 +5,12 @@ library(ggrepel)
 Mcurve %>%
   #for a new lysis curve, import your data and then change the name
   # in line 5
+  #also change the max y based on the data line 29
   pivot_longer(!Time, names_to= "sample", values_to= "OD") -> longdata
 #pivot_longer makes the data more favorable to graph
 
 print(longdata) #this will give you an output of what you did
-
+#longdata %>% tail() 
 ggplot(longdata, aes(x=Time, y=OD))+
   geom_line(
     aes(color=sample), 
@@ -25,8 +26,8 @@ ggplot(longdata, aes(x=Time, y=OD))+
 #line 21 is changing the scale on the x-axis
 # theme like prism plot, makes the plot black and white
 # To comment on multiple lines, use crtl-shift-c
-  scale_y_log10(limits=c(0.01,1))+
-
+  scale_y_log10(limits=c(0.01,2.0))+
+#to change the OD limits change the variables in line 29
 #this is changing the y-axis to log scale.
 #vignette("ggplot2-specs") will bring up a help page
 # for aesthetic questions
